@@ -58,6 +58,7 @@
     if(i===cur)return;
     if(cur>=0){slides[cur].classList.remove('on');const l=leaves[slides[cur].id];if(l)l();}
     cur=i;const s=slides[i];void s.offsetWidth;s.classList.add('on');
+    const near=portrait?2:1;pages.forEach((p,k)=>p.classList.toggle('far',Math.abs(k-i)>near));
     const f=N>1?i/(N-1):0;
     $('#fill').style.width=(f*100)+'%';$('#head').style.right=(f*100)+'%';
     const ch=+s.dataset.ch;tabs.forEach((t,c)=>t.classList.toggle('cur',c===ch));
@@ -93,6 +94,7 @@
       place(target,false);
     }
     segs.forEach(f=>f());
+    if(cur>=0){const near=portrait?2:1;pages.forEach((p,k)=>p.classList.toggle('far',Math.abs(k-cur)>near));}
   }
 
   /* input */
